@@ -1,16 +1,11 @@
-//import { useState } from 'react'
-import { Header } from './header'
-import '../App.css'
+// src/App.jsx
+import Header from "./header.jsx";
 
-export function App() {
-  //const [count, setCount] = useState(0)
-
+export default function App() {
   return (
     <>
       <Header />
-        
+      {/* */}
     </>
-  )
+  );
 }
-
-export default App
