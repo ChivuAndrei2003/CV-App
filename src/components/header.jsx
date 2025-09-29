@@ -1,10 +1,10 @@
-// src/header.jsx
-export default function Header() {
+ function Header() {
   return (
     <>
     <div className="header">
-      <p>Hello</p>
+      <h1 className="title">Cv App</h1>
     </div>
     </>
   );
-}
+ }
+export default Header;
