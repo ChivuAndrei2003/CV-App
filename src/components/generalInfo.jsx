@@ -1,4 +1,5 @@
 import { useState } from "react";
+import idicon from "../assets/idicon.svg";
 //tutorial https://www.geeksforgeeks.org/reactjs/create-a-form-using-reactjs/
 export function GeneralInfo() {
   const [firstName, setFirstName] = useState("");
@@ -20,12 +21,18 @@ export function GeneralInfo() {
       setAboutMe("");
   };
   return (
+    
     <form
       action="#"
       method="get"
       className="mx-auto mt-6 flex max-w-2xl flex-col gap-4 rounded-2xl bg-white p-6 shadow-lg"
     >
-      <label htmlFor="firstname" className="block text-sm font-semibold text-slate-600">
+      <h1 className="flex text-2xl text-center justify-center items-center gap-2">
+        <img src={idicon} className="h-6 w-6  justify-center"/> Personal Info</h1>
+      <label
+        htmlFor="firstname"
+        className="block text-sm font-semibold text-slate-600"
+      >
         First Name*
       </label>
       <input
@@ -38,7 +45,10 @@ export function GeneralInfo() {
         required
         className="block w-full rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-200"
       />
-      <label htmlFor="lastname" className="block text-sm font-semibold text-slate-600">
+      <label
+        htmlFor="lastname"
+        className="block text-sm font-semibold text-slate-600"
+      >
         Last Name*
       </label>
       <input
@@ -51,7 +61,10 @@ export function GeneralInfo() {
         required
         className="block w-full rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-200"
       />
-      <label htmlFor="email" className="block text-sm font-semibold text-slate-600">
+      <label
+        htmlFor="email"
+        className="block text-sm font-semibold text-slate-600"
+      >
         Enter Email*
       </label>
       <input
@@ -64,7 +77,10 @@ export function GeneralInfo() {
         required
         className="block w-full rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-200"
       />
-      <label htmlFor="contact" className="block text-sm font-semibold text-slate-600">
+      <label
+        htmlFor="contact"
+        className="block text-sm font-semibold text-slate-600"
+      >
         Contact*
       </label>
       <input
@@ -77,7 +93,10 @@ export function GeneralInfo() {
         required
         className="block w-full rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-200"
       />
-      <label htmlFor="about" className="block text-sm font-semibold text-slate-600">
+      <label
+        htmlFor="about"
+        className="block text-sm font-semibold text-slate-600"
+      >
         About
       </label>
       <textarea
@@ -97,15 +116,15 @@ export function GeneralInfo() {
           onClick={() => handleReset()}
           className="rounded-md border border-slate-300 px-4 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100"
         >
-        Reset
+          Reset
         </button>
         <button
           type="submit"
           value="Submit"
           onClick={(e) => handleSubmit(e)}
-          className="rounded-md bg-sky-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-sky-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500"
+          className="rounded-md bg-sky-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-sky-500  focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500"
         >
-        Submit
+          Submit
         </button>
       </div>
     </form>
