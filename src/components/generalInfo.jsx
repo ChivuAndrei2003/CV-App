@@ -1,15 +1,10 @@
 import idicon from "../assets/idicon.svg";
 //tutorial https://www.geeksforgeeks.org/reactjs/create-a-form-using-reactjs/
-export function GeneralInfo({ values, onChange, onSubmit, onReset }) {
+export function GeneralInfo({ values, onChange, onReset }) {
   const { firstName, lastName, email, phoneNum, aboutMe } = values;
 
   return (
-    <form
-      action="#"
-      method="get"
-      className="mx-auto mt-6 flex max-w-2xl flex-col gap-4 rounded-2xl bg-white p-6 shadow-lg"
-      onSubmit={onSubmit}
-    >
+    <form className="mx-auto mt-6 flex max-w-2xl flex-col gap-4 rounded-2xl bg-white p-6 shadow-lg">
       <h1 className="flex text-2xl text-center justify-center items-center gap-2">
         <img src={idicon} className="h-6 w-6  justify-center" /> Personal Info
       </h1>
@@ -75,7 +70,7 @@ export function GeneralInfo({ values, onChange, onSubmit, onReset }) {
           id="phoneNum"
           value={phoneNum}
           onChange={onChange}
-          placeholder="Enter Mobile number"
+          placeholder="Enter mobile number"
           required
           className="block w-full rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-200"
         />
@@ -93,7 +88,7 @@ export function GeneralInfo({ values, onChange, onSubmit, onReset }) {
           rows="10"
           value={aboutMe}
           onChange={onChange}
-          placeholder="About your self"
+          placeholder="Tell us about yourself"
           required
           className="block h-32 w-full resize-none rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-200"
         ></textarea>
@@ -108,13 +103,13 @@ export function GeneralInfo({ values, onChange, onSubmit, onReset }) {
         >
           Reset
         </button>
-        <button
-          type="submit"
-          value="submit"
-          className="rounded-md bg-sky-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-sky-500  focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500"
-        >
-          Submit
-        </button>
+        {/*<button
+            type="submit"
+            value="Submit"
+            className="rounded-md bg-sky-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-sky-500  focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500"
+          >
+            Submit
+          </button> */}
       </div>
     </form>
   );
