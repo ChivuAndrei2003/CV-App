@@ -1,4 +1,5 @@
 import { forwardRef } from "react";
+import "../styles/preview.css";
 const PreviewCv = forwardRef(function PreviewCv(
   { values, educationHistory = [], experienceHistory = [] },
   ref
@@ -72,29 +73,26 @@ const PreviewCv = forwardRef(function PreviewCv(
   const experienceItems = getExperienceItems();
 
   return (
-    <section
-      ref={ref}
-      className="mx-auto mt-6 max-w-2xl overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xl"
-    >
-      <header className="bg-slate-800 px-6 py-5 text-white">
-        <h2 className="text-2xl font-semibold tracking-wide">{fullName}</h2>
-        <p className="mt-2 text-sm text-slate-200">{contactLine}</p>
+    <section ref={ref} className="preview-card">
+      <header className="preview-card__header">
+        <h2 className="preview-card__name">{fullName}</h2>
+        <p className="preview-card__contact">{contactLine}</p>
       </header>
 
-      <div className="space-y-6 px-6 py-6">
-        <section>
-          <h3 className="text-lg font-semibold text-slate-800">About Me</h3>
-          <p className="mt-2 text-sm leading-relaxed text-slate-600">
+      <div className="preview-card__body">
+        <section className="preview-section preview-section--intro">
+          <h3 className="preview-section__title">About Me</h3>
+          <p className="preview-section__description">
             {aboutMe ||
               "Write a short introduction about yourself to see it here."}
           </p>
         </section>
 
-        <section className="border-t border-slate-200 pt-6">
-          <h3 className="text-lg font-semibold text-slate-800">Education</h3>
-          <div className="mt-4 flex flex-col gap-4">
+        <section className="preview-section">
+          <h3 className="preview-section__title">Education</h3>
+          <div className="preview-list">
             {educationItems.length === 0 && (
-              <p className="text-sm text-slate-500">
+              <p className="preview-empty">
                 Add your schools to see them listed here.
               </p>
             )}
@@ -112,18 +110,18 @@ const PreviewCv = forwardRef(function PreviewCv(
               return (
                 <article
                   key={`education-${index}`}
-                  className="rounded-lg border border-slate-200 px-4 py-3"
+                  className="preview-item"
                 >
-                  <div className="flex items-start justify-between gap-3">
+                  <div className="preview-item__header">
                     <div>
-                      <p className="text-sm font-semibold text-slate-800">
+                      <p className="preview-item__heading">
                         {entrySchool || "Institution"}
                       </p>
-                      <p className="text-sm text-slate-600">
+                      <p className="preview-item__subheading">
                         {entryDegree || "Degree"}
                       </p>
                     </div>
-                    <span className="text-xs font-medium uppercase tracking-wide text-slate-500">
+                    <span className="preview-item__period">
                       {period}
                     </span>
                   </div>
@@ -133,11 +131,11 @@ const PreviewCv = forwardRef(function PreviewCv(
           </div>
         </section>
 
-        <section className="border-t border-slate-200 pt-6">
-          <h3 className="text-lg font-semibold text-slate-800">Experience</h3>
-          <div className="mt-4 flex flex-col gap-4">
+        <section className="preview-section">
+          <h3 className="preview-section__title">Experience</h3>
+          <div className="preview-list">
             {experienceItems.length === 0 && (
-              <p className="text-sm text-slate-500">
+              <p className="preview-empty">
                 Add your roles to see them listed here.
               </p>
             )}
@@ -159,23 +157,23 @@ const PreviewCv = forwardRef(function PreviewCv(
               return (
                 <article
                   key={`experience-${index}`}
-                  className="rounded-lg border border-slate-200 px-4 py-3"
+                  className="preview-item"
                 >
-                  <div className="flex items-start justify-between gap-3">
+                  <div className="preview-item__header">
                     <div>
-                      <p className="text-sm font-semibold text-slate-800">
+                      <p className="preview-item__heading">
                         {entryCompany || "Company"}
                       </p>
-                      <p className="text-sm text-slate-600">
+                      <p className="preview-item__subheading">
                         {entryPosition || "Title"}
                       </p>
                     </div>
-                    <span className="text-xs font-medium uppercase tracking-wide text-slate-500">
+                    <span className="preview-item__period">
                       {period}
                     </span>
                   </div>
                   {responsibilities.length > 0 ? (
-                    <ul className="mt-3 list-disc space-y-1 pl-4 text-sm text-slate-600">
+                    <ul className="preview-responsibilities">
                       {responsibilities.map((item, responsibilityIndex) => (
                         <li
                           key={`experience-${index}-responsibility-${responsibilityIndex}`}
@@ -185,7 +183,7 @@ const PreviewCv = forwardRef(function PreviewCv(
                       ))}
                     </ul>
                   ) : (
-                    <p className="mt-3 text-sm text-slate-500">
+                    <p className="preview-empty">
                       Add responsibilities separated by commas or new lines to
                       display them here.
                     </p>
