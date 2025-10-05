@@ -1,8 +1,8 @@
-export default function PreviewCv({
-  values,
-  educationHistory = [],
-  experienceHistory = [],
-}) {
+import { forwardRef } from "react";
+const PreviewCv = forwardRef(function PreviewCv(
+  { values, educationHistory = [], experienceHistory = [] },
+  ref
+) {
   const {
     firstName,
     lastName,
@@ -72,7 +72,10 @@ export default function PreviewCv({
   const experienceItems = getExperienceItems();
 
   return (
-    <section className="mx-auto mt-6 max-w-2xl overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xl">
+    <section
+      ref={ref}
+      className="mx-auto mt-6 max-w-2xl overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xl"
+    >
       <header className="bg-slate-800 px-6 py-5 text-white">
         <h2 className="text-2xl font-semibold tracking-wide">{fullName}</h2>
         <p className="mt-2 text-sm text-slate-200">{contactLine}</p>
@@ -103,7 +106,8 @@ export default function PreviewCv({
                 dateStudyStart: start,
                 dateStudyEnd: end,
               } = entry;
-              const period = [start, end].filter(Boolean).join(' – ') || 'Period';
+              const period =
+                [start, end].filter(Boolean).join(" – ") || "Period";
 
               return (
                 <article
@@ -146,7 +150,8 @@ export default function PreviewCv({
                 workStart: start,
                 workEnd: end,
               } = entry;
-              const period = [start, end].filter(Boolean).join(' – ') || 'Period';
+              const period =
+                [start, end].filter(Boolean).join(" – ") || "Period";
               const responsibilities = normalizeResponsibilities(
                 entryResponsibilities
               );
@@ -193,4 +198,5 @@ export default function PreviewCv({
       </div>
     </section>
   );
-}
+});
+export default PreviewCv;

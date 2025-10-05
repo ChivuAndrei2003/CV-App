@@ -3,7 +3,7 @@ import documenticon from "../assets/documenticon.svg";
 
 export function Header({ onAutofill, onSave }) {
   return (
-    <header className="mx-auto mt-8 max-w-2xl flex-col items-center justify-center rounded-2xl bg-slate-800 px-6 py-4 text-white shadow-lg">
+    <header className="mx-auto mt-2 max-w-2xl flex-col items-center justify-center rounded-2xl bg-slate-800 px-6 py-4 text-white shadow-lg">
       <h1 className="text-center text-3xl font-semibold tracking-wide">
         CV App
       </h1>

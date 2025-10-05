@@ -110,7 +110,7 @@ export function ExperienceInfo({ values, onChange, onReset, onSubmit }) {
 
       <div className="flex justify-end gap-3 pt-2">
         <button
-          type="reset"
+          type="button"
           value="reset"
           onClick={onReset}
           className="rounded-md border border-slate-300 px-4 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100"

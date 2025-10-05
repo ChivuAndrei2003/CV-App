@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Header from "./header.jsx";
 import { GeneralInfo } from "./generalInfo.jsx";
 import { EducationInfo } from "./eduInfo.jsx";
 import { ExperienceInfo } from "./expInfo.jsx";
 import PreviewCv from "./preview.jsx";
 import { demoCvData } from "./autofillCv.jsx";
+import { useReactToPrint } from "react-to-print";
 
 const emptyForm = {
   firstName: "",
@@ -27,16 +28,52 @@ export default function App() {
   const [formData, setFormData] = useState(emptyForm);
   const [educationHistory, setEducationHistory] = useState([]);
   const [experienceHistory, setExperienceHistory] = useState([]);
+  const previewRef = useRef(null);
+
+  const handlePrint = useReactToPrint({
+    contentRef: previewRef,
+    documentTitle: `${formData.firstName || "CV"}-${formData.lastName || "Preview"}`,
+    onAfterPrint: () => console.log("Document saved."),
+  });
 
   function handleChange(event) {
     const { name, value } = event.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   }
 
-  function handleReset() {
-    setFormData(emptyForm);
-    setEducationHistory([]);
-    setExperienceHistory([]);
+  /*function handleGenInfoReset() {
+    
+  } */
+  function resetGeneralInfo() {
+    setFormData((prev) => ({
+      ...prev,
+      firstName: "",
+      lastName: "",
+      email: "",
+      phoneNum: "",
+      aboutMe: "",
+    }));
+  }
+
+  function resetEducationForm() {
+    setFormData((prev) => ({
+      ...prev,
+      school: "",
+      degree: "",
+      dateStudyStart: "",
+      dateStudyEnd: "",
+    }));
+  }
+
+  function resetExperienceInfo() {
+    setFormData((prev) => ({
+      ...prev,
+      companyName: "",
+      positionTitle: "",
+      jobResponsibilities: "",
+      workStart: "",
+      workEnd: "",
+    }));
   }
 
   function handleAutofill(data) {
@@ -45,9 +82,7 @@ export default function App() {
     setExperienceHistory([]);
   }
 
-  function handleSave() {
-    console.log("Save handler not implemented yet.", formData);
-  }
+  
 
   function handleEducationSubmit(event) {
     //
@@ -71,11 +106,11 @@ export default function App() {
       dateStudyEnd: "",
     }));
 
-////
+    ////
   }
 
   function handleExperienceSubmit(event) {
-   //
+    //
     event.preventDefault();
     const {
       companyName,
@@ -107,33 +142,35 @@ export default function App() {
       workStart: "",
       workEnd: "",
     }));
-////
+    ////
   }
 
   return (
     <>
       <Header
         onAutofill={() => handleAutofill(demoCvData)}
-        onSave={handleSave}
+        onSave={handlePrint}
       />
+      
       <GeneralInfo
         values={formData}
         onChange={handleChange}
-        onReset={handleReset}
+        onReset={resetGeneralInfo}
       />
       <EducationInfo
         values={formData}
         onChange={handleChange}
-        onReset={handleReset}
+        onReset={resetEducationForm}
         onSubmit={handleEducationSubmit}
       />
       <ExperienceInfo
         values={formData}
         onChange={handleChange}
-        onReset={handleReset}
+        onReset={resetExperienceInfo}
         onSubmit={handleExperienceSubmit}
       />
-      <PreviewCv
+      <PreviewCv 
+        ref={previewRef}
         values={formData}
         educationHistory={educationHistory}
         experienceHistory={experienceHistory}
