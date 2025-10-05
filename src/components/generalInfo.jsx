@@ -1,17 +1,17 @@
 import idicon from "../assets/idicon.svg";
+import "../styles/forms.css";
+
 //tutorial https://www.geeksforgeeks.org/reactjs/create-a-form-using-reactjs/
 export function GeneralInfo({ values, onChange, onReset }) {
   const { firstName, lastName, email, phoneNum, aboutMe } = values;
 
   return (
-    <form className="mx-auto mt-6 flex max-w-2xl flex-col gap-4 rounded-2xl bg-white p-6 shadow-lg">
-      <h1 className="flex text-2xl text-center justify-center items-center gap-2">
-        <img src={idicon} className="h-6 w-6  justify-center" /> Personal Info
+    <form className="form-section">
+      <h1 className="form-title">
+        <img src={idicon} className="form-title-icon" alt="Personal info" />
+        Personal Info
       </h1>
-      <label
-        htmlFor="firstName"
-        className="block text-sm font-semibold text-slate-600"
-      >
+      <label htmlFor="firstName" className="form-label">
         First Name*
         <input
           type="text"
@@ -21,14 +21,11 @@ export function GeneralInfo({ values, onChange, onReset }) {
           onChange={onChange}
           placeholder="Enter First Name"
           required
-          className="block w-full rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-200"
+          className="form-input"
         />
       </label>
 
-      <label
-        htmlFor="lastName"
-        className="block text-sm font-semibold text-slate-600"
-      >
+      <label htmlFor="lastName" className="form-label">
         Last Name*
         <input
           type="text"
@@ -38,14 +35,11 @@ export function GeneralInfo({ values, onChange, onReset }) {
           onChange={onChange}
           placeholder="Enter Last Name"
           required
-          className="block w-full rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-200"
+          className="form-input"
         />
       </label>
 
-      <label
-        htmlFor="email"
-        className="block text-sm font-semibold text-slate-600"
-      >
+      <label htmlFor="email" className="form-label">
         Enter Email*
         <input
           type="email"
@@ -55,14 +49,11 @@ export function GeneralInfo({ values, onChange, onReset }) {
           onChange={onChange}
           placeholder="Enter email"
           required
-          className="block w-full rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-200"
+          className="form-input"
         />
       </label>
 
-      <label
-        htmlFor="phone"
-        className="block text-sm font-semibold text-slate-600"
-      >
+      <label htmlFor="phoneNum" className="form-label">
         Contact*
         <input
           type="tel"
@@ -72,14 +63,11 @@ export function GeneralInfo({ values, onChange, onReset }) {
           onChange={onChange}
           placeholder="Enter mobile number"
           required
-          className="block w-full rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-200"
+          className="form-input"
         />
       </label>
 
-      <label
-        htmlFor="aboutMe"
-        className="block text-sm font-semibold text-slate-600"
-      >
+      <label htmlFor="aboutMe" className="form-label">
         About
         <textarea
           name="aboutMe"
@@ -90,20 +78,19 @@ export function GeneralInfo({ values, onChange, onReset }) {
           onChange={onChange}
           placeholder="Tell us about yourself"
           required
-          className="block h-32 w-full resize-none rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-200"
+          className="form-input textarea-fixed"
         ></textarea>
       </label>
 
-      <div className="flex justify-end gap-3 pt-2">
+      <div className="form-actions">
         <button
           type="button"
           value="reset"
           onClick={onReset}
-          className="rounded-md border border-slate-300 px-4 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100"
+          className="button button-secondary"
         >
           Reset
         </button>
-       
       </div>
     </form>
   );
