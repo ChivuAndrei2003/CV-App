@@ -5,7 +5,7 @@ import { EducationInfo } from "./eduInfo.jsx";
 import { ExperienceInfo } from "./expInfo.jsx";
 import PreviewCv from "./preview.jsx";
 import { demoCvData } from "./autofillCv.jsx";
-import { useReactToPrint } from "react-to-print";
+import { useSaveCv } from "./SaveCV.jsx";
 
 const emptyForm = {
   firstName: "",
@@ -30,10 +30,10 @@ export default function App() {
   const [experienceHistory, setExperienceHistory] = useState([]);
   const previewRef = useRef(null);
 
-  const handlePrint = useReactToPrint({
-    contentRef: previewRef,
-    documentTitle: `${formData.firstName || "CV"}-${formData.lastName || "Preview"}`,
-    onAfterPrint: () => console.log("Document saved."),
+  const handlePrint = useSaveCv({
+    targetRef: previewRef,
+    fileName: `${formData.firstName || "CV"}-${formData.lastName || "Preview"}`,
+    onAfterSave: () => console.log("Document saved."),
   });
 
   function handleChange(event) {
